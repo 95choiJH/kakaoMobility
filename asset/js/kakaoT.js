@@ -81,7 +81,7 @@ $(function(){
 
     var scTop = $('.service-kakaoT').offset().top
     var kakaoTH = $('.btn-kakaoT').outerHeight();
-    $('.btn-kakaoT button').click(function () { // 이 안에 있는 gsap들은 탭 버튼을 누를 때 마다 작동
+    $('.btn-kakaoT button').click(function () {
 
         $(this).addClass('active').siblings().removeClass('active')
 
@@ -214,8 +214,8 @@ $(function(){
             if ($(this).data('taxi') == activeTab) {
                 var prevTaxi = $('.taxi-type.active').children('img');
 
-                var timeLine = gsap.timeline();
-                timeLine.to(prevTaxi, 1,{
+                timeLine = gsap.timeline()
+                .to(prevTaxi, 1,{
                     xPercent: -124,
                     yPercent: 100,
                     scale: .8,
@@ -249,9 +249,8 @@ $(function(){
         })
     })
     var swiper = new Swiper(".proxyDetail", {
-        spaceBetween: 30,
         effect: "fade",
-        simulateTouch:false, // 터치불가, 그랩 슬라이드 끄기 위해 사용
+        simulateTouch:false,
         speed: 400,
         pagination: {
             el: ".swiper-pagination",
@@ -267,7 +266,7 @@ $(function(){
                 
                 gsap.to($('.dimmed'), .3,{
                     opacity: .3,
-                    yoyo: true, // 리버스로 반복, 무슨 말인지 모르면 물어볼 것!
+                    yoyo: true,
                     repeat: 1,
                     ease: Power1.easeOut
                 }) // 화이트현상
@@ -281,5 +280,3 @@ $(function(){
         }
     });
 })
-
-//////////////////////////////////////////////////////////// 모든 설명 주석은 추후에 모두 다 제거할 예정

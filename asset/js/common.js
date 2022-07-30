@@ -1,5 +1,4 @@
 $(function(){
-    
     if ($('.sc-informain').find('.img-box').length) {
         
         tl = gsap.timeline()
@@ -82,9 +81,17 @@ $(function(){
             }
         })
     }) // 이미지,비디오 옆으로 슬라이드
-
     if($('section').hasClass('graph')){
         var location = $('.graph').offset();
         $('html, body').animate({scrollTop : location.top}, 0 );
     }
+
+    // $('.report').click(function(e){
+    //     e.preventDefault();
+    //     window.location.href = "../subpage/movement.html?report"
+    // })
+    // var para = window.location.search
+    // if(para == "?report") {
+    //     $('html, body').animate({scrollTop : $('.sc-report').offset().top}, 0 );
+    // } // 카카오모빌리티 리포트 다른 방식으로 구현
 })
