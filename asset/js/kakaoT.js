@@ -5,7 +5,7 @@ $(function(){
     $(window).scroll(function () {
         var currentScroll = $(document).scrollTop();
 
-        currentScroll >= btnKakaoT - headerH ? $('.btn-kakaoT, .sc-kakaoT').addClass('fixed') : $('.btn-kakaoT, .sc-kakaoT').removeClass('fixed')
+        currentScroll + headerH >= btnKakaoT ? $('.btn-kakaoT, .sc-kakaoT').addClass('fixed') : $('.btn-kakaoT, .sc-kakaoT').removeClass('fixed')
     }) // 카카오T 탭 메뉴 고정
 
     
@@ -89,16 +89,14 @@ $(function(){
 
         $(window).scrollTop(scTop - (kakaoTH + headerH));
         $('.sc-kakaoT').each(function () {
-            cover = gsap.utils.toArray($(this).find('.cover'));
-            cover.forEach((cover) => {
-                gsap.set(cover, {
-                    xPercent: 0
-                })
-            }) // cover
-
-
             if ($(this).data('content') == activeTab) {
                 $(this).addClass('active')
+                cover = gsap.utils.toArray($(this).find('.cover'));
+                cover.forEach((cover) => {
+                    gsap.set(cover, {
+                        xPercent: 0
+                    })
+                }) // cover
                 const mainImg = $(this).find('.mainImg-area img');
                 gsap.from(mainImg, 1.3, {
                     y: 80,
@@ -130,54 +128,49 @@ $(function(){
                         }
                     })
                 }) // cover
+                
 
+                rightLeft = gsap.utils.toArray('.rightLeft');
+                rightLeft.forEach((rightLeft) => {
+                    gsap.set(rightLeft, {
+                        x: 10,
+                        opacity: 0,
+                    })
+                    gsap.to(rightLeft, 1.2, {
+                        x: 0,
+                        opacity: 1,
+                        scrollTrigger: {
+                            trigger: rightLeft,
+                            start: 'top bottom',
+                        }
+                    })
+                }) // 텍스트 오른쪽에서 왼쪽으로
+
+                textUpVer2_click = $('.textUpClick');
+                gsap.set(textUpVer2_click, {
+                    y:10,
+                    opacity: 0
+                })
+                gsap.to(textUpVer2_click, {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: textUpVer2_click,
+                        start: 'top bottom',
+                    }
+
+                }) // text up
             } else {
                 $(this).removeClass('active')
             }
 
         })
-
-        rightLeft = gsap.utils.toArray('.rightLeft');
-            rightLeft.forEach((rightLeft) => {
-                gsap.set(rightLeft, {
-                    x: 10,
-                    opacity: 0,
-                })
-            })
-
-            rightLeft = gsap.utils.toArray('.rightLeft');
-            rightLeft.forEach((rightLeft) => {
-                gsap.to(rightLeft, 1.2, {
-                    x: 0,
-                    opacity: 1,
-                    scrollTrigger: {
-                        trigger: rightLeft,
-                        start: 'top bottom',
-                    }
-                })
-            }) // 텍스트 오른쪽에서 왼쪽으로
-
-        textUpVer2_click = $('.textUpClick');
-        gsap.set(textUpVer2_click, {
-            y:10,
-            opacity: 0
-        })
-        gsap.to(textUpVer2_click, {
-            y: 0,
-            opacity: 1,
-            scrollTrigger: {
-                trigger: textUpVer2_click,
-                start: 'top bottom',
-            }
-
-        }) // text up
-
     });
      
     var activeTaxi = $('.taxi-type.active').children('img');
     var activeText = $('.taxi-type.active').children('p');
     var other = $('.taxi-type').not('.active').children('img');
-    const otherTaxi = gsap.utils.toArray(other);
+    var otherTaxi = gsap.utils.toArray(other);
 
     gsap.set(activeTaxi, {
         xPercent: 0,

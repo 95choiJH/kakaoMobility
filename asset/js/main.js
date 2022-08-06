@@ -21,7 +21,7 @@ $(function () {
     .to($('.loading-main'), .8, {
         opacity: 0,
     },'loadingEnd') 
-    // 메인로딩이미지
+    // // 메인로딩이미지
     
 
 
