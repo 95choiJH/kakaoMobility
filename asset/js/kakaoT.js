@@ -1,7 +1,7 @@
 $(function(){
 
     var btnKakaoT = $('.btn-kakaoT').offset().top;
-    var headerH = $('.header-area').outerHeight();
+    var headerH = 55;
     $(window).scroll(function () {
         var currentScroll = $(document).scrollTop();
 
