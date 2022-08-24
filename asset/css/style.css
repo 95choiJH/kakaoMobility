@@ -158,6 +158,7 @@ textarea::-webkit-outer-spin-button {
 }
 
 body {
+  min-width: 1200px;
   font-family: KakaoBig, "Noto Sans KR", -apple-system, BlinkMacSystemFont, nanumbarungothic, nanumgothic, "malgun gothic", dotum, sans-serif;
   line-height: 1;
   font-size: 16px;
@@ -737,9 +738,10 @@ section.center .link-site::after {
   clip: rect(0, auto, auto, 0);
 }
 .visual-area .copy {
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   right: -7.5em;
-  bottom: 5em;
+  top: 94vh;
   font-size: 12px;
   color: #fff;
   transform: rotate(-90deg);
