@@ -42,7 +42,8 @@
     overflow: hidden;
     video {
         height: 100%;
-        width: 100%
+        width: 100%;
+        object-fit: cover;
     }
     .common-inner {
         position: absolute;
@@ -103,8 +104,8 @@
         clip: rect(0, auto, auto, 0);
     }
     .copy {
-        position: sticky;
-        right: -7.5em; top: 94vh;
+        position: fixed;
+        right: -7.5em; bottom: 5em;
         font-size: 12px;
         color: #fff;
         transform: rotate(-90deg);

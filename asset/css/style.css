@@ -675,6 +675,8 @@ section.center .link-site::after {
 .visual-area video {
   height: 100%;
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .visual-area .common-inner {
   position: absolute;
@@ -738,10 +740,9 @@ section.center .link-site::after {
   clip: rect(0, auto, auto, 0);
 }
 .visual-area .copy {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   right: -7.5em;
-  top: 94vh;
+  bottom: 5em;
   font-size: 12px;
   color: #fff;
   transform: rotate(-90deg);
