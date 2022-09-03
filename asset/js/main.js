@@ -40,6 +40,7 @@ $(function () {
     }, {
         opacity: 1,
         y: 0,
+        delay: 1.2,
         stagger: {
             each: .3
         }
@@ -47,15 +48,16 @@ $(function () {
 
     var lastNum = parseInt($('.day-distance .distance').text()); 
     var startNum = lastNum - (lastNum / 10)
-    var count = {
-        roll: startNum
+    var distance = {
+        change: startNum
     };
-    gsap.to(count, 5, {
-        roll: lastNum,
+    gsap.to(distance, 3, {
+        change: lastNum,
         onUpdate: changeNumber,
+        delay: 1.2
     })
     function changeNumber() {
-        var currentNum = count.roll;
+        var currentNum = distance.change;
         var push = parseInt(currentNum).toLocaleString('ko-KR'); 
         $('.day-distance .distance').text(push)
     } // 숫자 롤링 이벤트
@@ -69,5 +71,5 @@ $(function () {
         x: 0,
         opacity: 1
     }) 
-    // 텍스트 왼쪽에서 오른쪽으로 슬라이드 (스크롤트리거 x)
+    // 텍스트 왼쪽에서 오른쪽으로 슬라이드
 })

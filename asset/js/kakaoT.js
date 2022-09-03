@@ -4,32 +4,31 @@ $(function(){
     var headerH = 55;
     $(window).scroll(function () {
         var currentScroll = $(document).scrollTop();
-
         currentScroll + headerH >= btnKakaoT ? $('.btn-kakaoT, .sc-kakaoT').addClass('fixed') : $('.btn-kakaoT, .sc-kakaoT').removeClass('fixed')
     }) // 카카오T 탭 메뉴 고정
 
     
 
     imgUp = gsap.utils.toArray('.imgUp');
-    imgUp.forEach((imgUp) => {
-        gsap.from(imgUp, 1.3, {
+    $(imgUp).each(function(){
+        gsap.from($(this), 1.3, {
             y: 80,
-            ease: Power1.easeInOut,
             opacity: 0,
             scrollTrigger: {
-                trigger: imgUp,
+                trigger: $(this),
                 start: 'top bottom',
-            }
+            },
+            ease: Power1.easeInOut,
         })
     }) // 서비스 imgUp
 
     rightLeft = gsap.utils.toArray('.rightLeft');
-    rightLeft.forEach((rightLeft) => {
-        gsap.from(rightLeft, 1.2, {
+    $(rightLeft).each(function() {
+        gsap.from($(this), 1.2, {
             x: 10,
             opacity: 0,
             scrollTrigger: {
-                trigger: rightLeft,
+                trigger: $(this),
                 start: 'top bottom',
             }
         })
@@ -45,35 +44,35 @@ $(function(){
     }) // sc-app 카카오T 아이콘 gsap
 
     var textUpVer2 = gsap.utils.toArray('.textUp-ver2')
-    textUpVer2.forEach((textUpVer2) => {
-        gsap.from(textUpVer2, 1,{
+    $(textUpVer2).each(function() {
+        gsap.from($(this), 1,{
             y: 10,
             opacity: 0,
             scrollTrigger: {
-                trigger: textUpVer2,
+                trigger: $(this),
                 start: 'top bottom',
             }
         })
     }) // text up gsap
 
     var opacity = gsap.utils.toArray('.opacity');
-    opacity.forEach((opacity) => {
-        gsap.from(opacity, 1,{
+    $(opacity).each(function() {
+        gsap.from($(this), 1,{
             opacity: 0,
             scrollTrigger: {
-                trigger: opacity,
+                trigger: $(this),
                 start: 'top bottom',
             }
         })
     }) // opacity
 
     leftRight = gsap.utils.toArray('.leftRight');
-    leftRight.forEach((leftRight) => {
+    $(leftRight).each(function() {
         gsap.from(leftRight, 1.2, {
             x: -10,
             opacity: 0,
             scrollTrigger: {
-                trigger: leftRight,
+                trigger: $(this),
                 start: 'top bottom',
             }
         })
@@ -81,23 +80,17 @@ $(function(){
 
     var scTop = $('.service-kakaoT').offset().top
     var kakaoTH = $('.btn-kakaoT').outerHeight();
-    $('.btn-kakaoT button').click(function () {
+    $('.btn-kakaoT button').click(function() {
 
         $(this).addClass('active').siblings().removeClass('active')
 
         var activeTab = $(this).data('tab');
 
         $(window).scrollTop(scTop - (kakaoTH + headerH));
-        $('.sc-kakaoT').each(function () {
+        $('.sc-kakaoT').each(function() {
             if ($(this).data('content') == activeTab) {
-                $(this).addClass('active')
-                cover = gsap.utils.toArray($(this).find('.cover'));
-                cover.forEach((cover) => {
-                    gsap.set(cover, {
-                        xPercent: 0
-                    })
-                }) // cover
-                const mainImg = $(this).find('.mainImg-area img');
+                $(this).addClass('active').siblings().removeClass('active')
+                var mainImg = $(this).find('.mainImg-area img');
                 gsap.from(mainImg, 1.3, {
                     y: 80,
                     ease: Power1.easeInOut,
@@ -105,42 +98,44 @@ $(function(){
                 })
 
                 textUp = gsap.utils.toArray($(this).find('.textUp'));
-                textUp.forEach((textUp) => {
-                    gsap.from(textUp, 1.2, {
+                $(textUp).each(function() {
+                    gsap.from($(this), 1.2, {
                         y: 30,
                         opacity: 0,
                         scrollTrigger: {
-                            trigger: textUp,
+                            trigger: $(this),
                             start: 'top bottom',
                         }
                     })
                 }) // 텍스트 아래에서 위로
 
 
-                var cover = gsap.utils.toArray($(this).find('.cover'));
-                cover.forEach((cover) => {
-                    gsap.to(cover, 1.2, {
+                cover = gsap.utils.toArray($(this).find('.cover'));
+                $(cover).each(function() {
+                    gsap.set($(this), {
+                        xPercent: 0
+                    })
+                    gsap.to($(this), 1.2, {
                         xPercent: 100,
                         ease: Power1.easeInOut,
                         scrollTrigger: {
-                            trigger: cover,
+                            trigger: $(this),
                             start: 'top bottom'
                         }
                     })
                 }) // cover
-                
 
                 rightLeft = gsap.utils.toArray('.rightLeft');
-                rightLeft.forEach((rightLeft) => {
-                    gsap.set(rightLeft, {
+                $(rightLeft).each(function() {
+                    gsap.set($(this), {
                         x: 10,
                         opacity: 0,
                     })
-                    gsap.to(rightLeft, 1.2, {
+                    gsap.to($(this), 1.2, {
                         x: 0,
                         opacity: 1,
                         scrollTrigger: {
-                            trigger: rightLeft,
+                            trigger: $(this),
                             start: 'top bottom',
                         }
                     })
@@ -158,12 +153,8 @@ $(function(){
                         trigger: textUpVer2_click,
                         start: 'top bottom',
                     }
-
                 }) // text up
-            } else {
-                $(this).removeClass('active')
             }
-
         })
     });
      
@@ -203,7 +194,7 @@ $(function(){
 
         var activeTab = $(this).data('tab');
         
-        $('.taxi-type').each(function () {
+        $('.taxi-type').each(function() {
             if ($(this).data('taxi') == activeTab) {
                 var prevTaxi = $('.taxi-type.active').children('img');
 
@@ -241,9 +232,9 @@ $(function(){
             }
         })
     })
-    var swiper = new Swiper(".proxyDetail", {
+    var proxyDetail = new Swiper(".proxyDetail", {
         effect: "fade",
-        simulateTouch:false,
+        simulateTouch: false,
         speed: 400,
         pagination: {
             el: ".swiper-pagination",
