@@ -21,7 +21,7 @@ $(function () {
     .to($('.loading-main'), .8, {
         opacity: 0,
     },'loadingEnd') 
-    // // 메인로딩이미지
+    // 메인로딩이미지
     
 
 
@@ -45,7 +45,7 @@ $(function () {
         }
     }) // 메인페이지 we move life 텍스트 순차적으로 text up
 
-    var lastNum = parseInt($('.day-distance span').text()); 
+    var lastNum = parseInt($('.day-distance .distance').text()); 
     var startNum = lastNum - (lastNum / 10)
     var count = {
         roll: startNum
@@ -57,7 +57,7 @@ $(function () {
     function changeNumber() {
         var currentNum = count.roll;
         var push = parseInt(currentNum).toLocaleString('ko-KR'); 
-        $('.day-distance span').text(push)
+        $('.day-distance .distance').text(push)
     } // 숫자 롤링 이벤트
 
 

@@ -7,18 +7,14 @@
     opacity: 1;
     z-index: 100;
     pointer-events: none;
-    // transition: .8s ease-out;
     .wrapper {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         width: 100%;
-        margin-top: -14px;
-        vertical-align: middle;
     }
     .line { 
         height: 40px;
-        margin: 14px auto 0;
         background-color: rgb(255, 205, 0);
         transform: translateX(-100%);
         opacity: 1;
@@ -26,11 +22,8 @@
     .image {
         width: 20%;
         padding-bottom: 5%;
-        margin: 14px auto 0;
-        background-image: url(../images/slogan.svg);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
+        margin: 14px auto;
+        background: url(../images/slogan.svg) no-repeat center/contain;
         transform: scale(1);
         opacity: 0;
     }
@@ -39,18 +32,19 @@
     position: relative;
     height: 100vh;
     min-height: 56.25vw;
-    overflow: hidden;
+    // overflow: hidden;
     video {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
     .common-inner {
-        position: absolute;
-        top: 0; left: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
     }
     .title-area {
         font-size: 100px;
@@ -76,22 +70,24 @@
             line-height: 34px;
         }
         em {
-            display: inline-block;
-            height: 46px;
-            margin-bottom: 15px;
-            font-size: 30px;
-            line-height: 46px;
-            vertical-align: bottom;
-            span {
+            display: block;
+            .distance {
                 font-size: 72px;
                 line-height: 92px;
                 font-weight: 800;
+                vertical-align: middle;
+            }
+            .km {
+                display: inline-block;
+                margin-top: 16px;
+                font-size: 30px;
+                vertical-align: middle;
             }
         }
     }
     p {
         position: absolute;
-        bottom: 0;
+        bottom: 56px;
         height: 46px;
         font-size: 30px;
         line-height: 46px;
@@ -101,11 +97,12 @@
         position: absolute;
         top: 0; right: 0;
         width: 50%; height: 100%;
-        clip: rect(0, auto, auto, 0);
+        clip: rect(0, auto, auto, auto);
+        pointer-events: none;
     }
     .copy {
         position: fixed;
-        right: -7.5em; bottom: 5em;
+        right: -90px; bottom: 60px;
         font-size: 12px;
         color: #fff;
         transform: rotate(-90deg);
@@ -127,7 +124,8 @@
         .text-wrap {
             width: 66.7%;
             margin: 0 auto;
-            text-align: left;
+            word-break: keep-all;
+            // text-align: left;
             h2 {
                 font-size: 30px;
                 font-weight: 800;
@@ -139,8 +137,7 @@
                 font-weight: 400;
                 line-height: 30px;
                 color: rgb(102, 102, 102);
-                word-break: keep-all;
-                white-space: pre-wrap;
+                white-space: pre-line;
             }
         }
         .btn-more {
@@ -158,7 +155,7 @@
         }
         .vid-area, .img-area {
             position: relative;
-            flex: 1;
+            width: 50%;
             padding: 0 6px;
             overflow: hidden;
             video, img {
@@ -170,11 +167,7 @@
 
 .sc-service {
     height: 700px;
-    background-image: url(../images/sc_service.png);
-    background-size: contain;
-    background-color: rgb(30, 35, 61);
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: url(../images/sc_service.png) no-repeat rgb(30, 35, 61) center/contain;
     color: #fff;
     .common-inner {
         position: relative;
@@ -189,12 +182,14 @@
             display: block;
             line-height: 46px;
             color: #fff;
+            white-space: pre-line;
         }
         em {
             display: block;
             font-size: 100%;
             line-height: 46px;
             color: rgb(255, 205, 0);
+            white-space: pre-line;
         }
     }
 }
@@ -219,6 +214,7 @@
         h2 {
             line-height: 46px;
             color: #fff;
+            white-space: pre-line;
         }
         p {
             padding-top: 24px;

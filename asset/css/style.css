@@ -644,12 +644,9 @@ section.center .link-site::after {
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
-  margin-top: -14px;
-  vertical-align: middle;
 }
 .loading-main .line {
   height: 40px;
-  margin: 14px auto 0;
   background-color: rgb(255, 205, 0);
   transform: translateX(-100%);
   opacity: 1;
@@ -657,11 +654,8 @@ section.center .link-site::after {
 .loading-main .image {
   width: 20%;
   padding-bottom: 5%;
-  margin: 14px auto 0;
-  background-image: url(../images/slogan.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
+  margin: 14px auto;
+  background: url(../images/slogan.svg) no-repeat center/contain;
   transform: scale(1);
   opacity: 0;
 }
@@ -670,7 +664,6 @@ section.center .link-site::after {
   position: relative;
   height: 100vh;
   min-height: 56.25vw;
-  overflow: hidden;
 }
 .visual-area video {
   height: 100%;
@@ -679,12 +672,13 @@ section.center .link-site::after {
      object-fit: cover;
 }
 .visual-area .common-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .visual-area .title-area {
   font-size: 100px;
@@ -711,21 +705,23 @@ section.center .link-site::after {
   line-height: 34px;
 }
 .visual-area .day-distance em {
-  display: inline-block;
-  height: 46px;
-  margin-bottom: 15px;
-  font-size: 30px;
-  line-height: 46px;
-  vertical-align: bottom;
+  display: block;
 }
-.visual-area .day-distance em span {
+.visual-area .day-distance em .distance {
   font-size: 72px;
   line-height: 92px;
   font-weight: 800;
+  vertical-align: middle;
+}
+.visual-area .day-distance em .km {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 30px;
+  vertical-align: middle;
 }
 .visual-area p {
   position: absolute;
-  bottom: 0;
+  bottom: 56px;
   height: 46px;
   font-size: 30px;
   line-height: 46px;
@@ -737,12 +733,13 @@ section.center .link-site::after {
   right: 0;
   width: 50%;
   height: 100%;
-  clip: rect(0, auto, auto, 0);
+  clip: rect(0, auto, auto, auto);
+  pointer-events: none;
 }
 .visual-area .copy {
   position: fixed;
-  right: -7.5em;
-  bottom: 5em;
+  right: -90px;
+  bottom: 60px;
   font-size: 12px;
   color: #fff;
   transform: rotate(-90deg);
@@ -765,7 +762,7 @@ section.center .link-site::after {
 .sc-story .story-box .text-wrap {
   width: 66.7%;
   margin: 0 auto;
-  text-align: left;
+  word-break: keep-all;
 }
 .sc-story .story-box .text-wrap h2 {
   font-size: 30px;
@@ -778,8 +775,7 @@ section.center .link-site::after {
   font-weight: 400;
   line-height: 30px;
   color: rgb(102, 102, 102);
-  word-break: keep-all;
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 .sc-story .story-box .btn-more {
   color: #000;
@@ -795,7 +791,7 @@ section.center .link-site::after {
 }
 .sc-story .story-box .vid-area, .sc-story .story-box .img-area {
   position: relative;
-  flex: 1;
+  width: 50%;
   padding: 0 6px;
   overflow: hidden;
 }
@@ -806,11 +802,7 @@ section.center .link-site::after {
 
 .sc-service {
   height: 700px;
-  background-image: url(../images/sc_service.png);
-  background-size: contain;
-  background-color: rgb(30, 35, 61);
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: url(../images/sc_service.png) no-repeat rgb(30, 35, 61) center/contain;
   color: #fff;
 }
 .sc-service .common-inner {
@@ -827,12 +819,14 @@ section.center .link-site::after {
   display: block;
   line-height: 46px;
   color: #fff;
+  white-space: pre-line;
 }
 .sc-service .text-wrap em {
   display: block;
   font-size: 100%;
   line-height: 46px;
   color: rgb(255, 205, 0);
+  white-space: pre-line;
 }
 
 .sc-mainRecruit {
@@ -860,6 +854,7 @@ section.center .link-site::after {
 .sc-mainRecruit .text-wrap h2 {
   line-height: 46px;
   color: #fff;
+  white-space: pre-line;
 }
 .sc-mainRecruit .text-wrap p {
   padding-top: 24px;
@@ -876,7 +871,7 @@ section.center .link-site::after {
   width: 100%;
   padding: 30px 0;
   margin-top: 200px;
-  border-top: 1px solid rgb(173, 173, 173);
+  border-top: 1px solid rgb(229, 229, 229);
   background-color: #fff;
   overflow-x: auto;
 }
@@ -897,27 +892,24 @@ section.center .link-site::after {
   top: -8px;
 }
 .btn-kakaoT button::before {
+  content: "";
   position: absolute;
   top: 0px;
   left: 50%;
   width: 8px;
   height: 8px;
-  margin-left: -4px;
+  transform: translateX(-50%);
   border-radius: 50%;
   background-color: rgb(255, 205, 0);
   opacity: 0;
-  content: "";
 }
 .btn-kakaoT button.active {
   color: #000;
 }
 .btn-kakaoT button.active::before {
-  opacity: 1;
-  transition: all 0.3s ease-out 0s;
   top: -8px;
-}
-.btn-kakaoT button:last-child {
-  margin-right: 40px;
+  transition: 0.3s ease-out;
+  opacity: 1;
 }
 .btn-kakaoT.fixed {
   position: -webkit-sticky;
@@ -925,10 +917,11 @@ section.center .link-site::after {
   top: 55px;
   left: 0;
   padding: 30px 0;
+  border-top: none;
+  border-bottom: 1px solid rgb(173, 173, 173);
   z-index: 10;
 }
 .btn-kakaoT::-webkit-scrollbar {
-  width: 30%;
   height: 6px;
 }
 .btn-kakaoT::-webkit-scrollbar-track {
@@ -941,22 +934,22 @@ section.center .link-site::after {
   background-color: rgb(201, 201, 201);
   border-radius: 23px;
 }
-.btn-kakaoT::-webkit-scrollbar-button {
-  width: 0;
-  height: 0;
-}
 
 .sc-kakaoT {
   display: none;
   border-top: 1px solid rgb(229, 229, 229);
+}
+.sc-kakaoT .common-inner {
+  position: relative;
+  padding: 0 5%;
 }
 .sc-kakaoT .mainImg-area img {
   width: 100%;
   height: 610px;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: 50% 50%;
-     object-position: 50% 50%;
+  -o-object-position: 50%;
+     object-position: 50%;
   opacity: 1;
 }
 .sc-kakaoT .mainTitle-box {
@@ -966,21 +959,18 @@ section.center .link-site::after {
 .sc-kakaoT .mainTitle-box h2 {
   width: 50%;
   padding: 0 150px;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   font-size: 30px;
   font-weight: 800;
   line-height: 46px;
   white-space: pre-line;
+  word-break: keep-all;
 }
 .sc-kakaoT .mainTitle-box p {
-  flex: 1;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   font-size: 22px;
   font-weight: 800;
   line-height: 34px;
   white-space: pre-line;
+  word-break: keep-all;
 }
 .sc-kakaoT .mainTitle-box .desc {
   width: 50%;
@@ -1003,7 +993,7 @@ section.center .link-site::after {
   padding-bottom: 80px;
 }
 .sc-kakaoT .title-box {
-  flex: 1;
+  width: 50%;
   padding: 0 6px;
 }
 .sc-kakaoT .title-box h3 {
@@ -1011,7 +1001,6 @@ section.center .link-site::after {
   font-weight: 800;
   line-height: 46px;
   word-break: keep-all;
-  overflow-wrap: break-word;
   white-space: pre-line;
 }
 .sc-kakaoT .title-box p {
@@ -1021,7 +1010,6 @@ section.center .link-site::after {
   line-height: 30px;
   color: rgb(102, 102, 102);
   word-break: keep-all;
-  overflow-wrap: break-word;
   white-space: pre-line;
 }
 .sc-kakaoT .title-wrap {
@@ -1048,7 +1036,7 @@ section.center .link-site::after {
   display: flex;
   flex-flow: row-reverse;
   padding: 0;
-  overflow: unset;
+  overflow: visible;
 }
 .sc-kakaoT .yellow-box img {
   margin-top: -60px;
@@ -1060,14 +1048,12 @@ section.center .link-site::after {
 .sc-kakaoT .yellow-box .title-box {
   padding: 0;
 }
-.sc-kakaoT .yellow-box .title-box h3 {
-  word-break: normal;
-  overflow-wrap: normal;
-}
 .sc-kakaoT .yellow-inner {
   display: flex;
   align-items: center;
+  max-width: 1920px;
   padding: 0 5%;
+  margin: 0 auto;
 }
 .sc-kakaoT .yellow-inner.reverse .img-box {
   flex-flow: row;
@@ -1084,13 +1070,11 @@ section.center .link-site::after {
   width: 100%;
   height: 608px;
   margin-top: 120px;
-  background-image: url(../images/bg_taxi.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url(../images/bg_taxi.jpg) no-repeat center/cover;
   color: #fff;
   overflow: hidden;
 }
-.animate-taxi strong {
+.animate-taxi em {
   display: block;
   padding: 94px 6px 0;
   font-size: 30px;
@@ -1098,6 +1082,7 @@ section.center .link-site::after {
   line-height: 46px;
 }
 .animate-taxi .desc {
+  display: inline-block;
   padding: 24px 6px 0;
   font-size: 16px;
   font-weight: 400;
@@ -1175,7 +1160,7 @@ section.center .link-site::after {
   pointer-events: none;
   z-index: 2;
 }
-.animate-proxy strong {
+.animate-proxy em {
   display: block;
   padding: 109px 6px 24px;
   font-size: 30px;
@@ -1193,10 +1178,10 @@ section.center .link-site::after {
   padding-left: 5%;
   padding-right: 5%;
   bottom: 109px;
-  z-index: 2;
   width: 300px;
   text-align: left;
   box-sizing: content-box;
+  z-index: 2;
 }
 .animate-proxy .btn-proxy .swiper-pagination-bullet {
   width: 100%;
@@ -1244,18 +1229,14 @@ section.center .link-site::after {
   height: 100%;
   background: #fff;
   opacity: 0;
-  z-index: 3;
   pointer-events: none;
+  z-index: 3;
 }
 
 .proxy-type {
   position: relative;
-  flex-shrink: 0;
-  width: 100%;
   height: 608px;
-  background-position: center -14px;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: no-repeat center -14px/cover;
 }
 .proxy-type p {
   position: absolute;
@@ -1292,26 +1273,25 @@ section.center .link-site::after {
   font-size: 30px;
   font-weight: 800;
   line-height: 46px;
-  word-break: keep-all;
-  overflow-wrap: break-word;
 }
 .sc-app p {
-  margin-top: 40px;
+  margin: 40px 0;
   font-size: 22px;
   font-weight: 800;
   line-height: 34px;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   white-space: pre-line;
+}
+.sc-app .link-app {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 .sc-app a {
   display: inline-block;
-  margin-right: 10px;
   background-color: transparent;
   width: 220px;
   height: 86px;
   padding: 26px 0px;
-  margin-top: 40px;
   border: 1px solid #000;
   font-size: 22px;
   font-weight: 400;
@@ -1325,8 +1305,7 @@ section.center .link-site::after {
   height: 32px;
   margin-right: 8px;
   margin-bottom: 6px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: no-repeat center/contain;
   vertical-align: middle;
 }
 .sc-app a.googlePlay::before {
@@ -1348,19 +1327,17 @@ section.center .link-site::after {
   color: #fff;
 }
 .sc-kakaoTguide .bg-guide {
+  position: absolute;
   width: 100%;
   height: 632px;
-  background-image: url(../images/sc_guide.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background: url(../images/sc_guide.jpg) no-repeat center/cover;
+  z-index: -1;
+  pointer-events: none;
 }
 .sc-kakaoTguide .text-box {
-  position: absolute;
-  top: 0px;
-  left: 0px;
   width: 100%;
-  padding-top: 220px;
+  height: 632px;
+  padding-top: 120px;
 }
 .sc-kakaoTguide .text-box h2 {
   display: block;
@@ -1374,8 +1351,6 @@ section.center .link-site::after {
   font-size: 16px;
   font-weight: 400;
   line-height: 30px;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   white-space: pre-line;
 }
 .sc-kakaoTguide .text-box a {
@@ -1383,7 +1358,7 @@ section.center .link-site::after {
 }
 
 .sc-qa {
-  padding: 100px 0;
+  padding: 100px 0 200px;
 }
 .sc-qa .common-inner {
   display: flex;
@@ -1402,25 +1377,21 @@ section.center .link-site::after {
 .sc-qa .bg-qa {
   position: absolute;
   top: 0px;
-  left: 125px;
+  left: 50%;
   max-height: 100%;
-  margin: 0px 5%;
   width: 393px;
   height: 175px;
-  background-image: url(../images/sc_qa.svg), none;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: url(../images/sc_qa.svg) no-repeat center/contain;
+  transform: translateX(-50%);
   z-index: -1;
 }
 .sc-qa .text-box {
-  flex: 1;
+  width: 50%;
 }
 .sc-qa .text-box p {
   font-size: 22px;
   font-weight: 800;
   line-height: 34px;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   white-space: pre-line;
 }
 .sc-qa .btn-more {
@@ -1441,9 +1412,7 @@ section.center .link-site::after {
   position: relative;
   width: 100%;
   height: 632px;
-  padding-top: 100px;
   color: #fff;
-  overflow-x: hidden;
 }
 .sc-partner video {
   position: absolute;
@@ -1455,6 +1424,9 @@ section.center .link-site::after {
   min-width: 303.797vh;
   min-height: 32.9167vw;
   z-index: -1;
+}
+.sc-partner .common-inner {
+  padding-top: 100px;
 }
 .sc-partner .text-box {
   padding: 0 6px;

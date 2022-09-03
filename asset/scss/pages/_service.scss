@@ -6,7 +6,7 @@
     width: 100%;
     padding: 30px 0;
     margin-top: 200px;
-    border-top: 1px solid rgb(173, 173, 173);
+    border-top: 1px solid rgb(229, 229, 229);
     background-color: #fff;
     overflow-x: auto;
 
@@ -28,40 +28,34 @@
         }
 
         &::before {
+            content:'';
             position: absolute;
-            top: 0px;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            margin-left: -4px;
+            top: 0px; left: 50%;
+            width: 8px; height: 8px;
+            transform: translateX(-50%);
             border-radius: 50%;
             background-color: rgb(255, 205, 0);
             opacity: 0;
-            content:'';
         }
 
         &.active {
             color: #000;
             &::before {
-                opacity: 1;
-                transition: all 0.3s ease-out 0s;
                 top: -8px;
+                transition: .3s ease-out;
+                opacity: 1;
             }
-            
-        }
-        &:last-child {
-            margin-right: 40px;
         }
     }
     &.fixed {
         position: sticky;
         top: 55px; left: 0;
         padding: 30px 0;
+        border-top: none;
+        border-bottom: 1px solid rgb(173, 173, 173);
         z-index: 10;
     }
-    
     &::-webkit-scrollbar {
-        width: 30%;
         height: 6px;
     }
     &::-webkit-scrollbar-track {
@@ -74,19 +68,19 @@
         background-color: rgb(201, 201, 201);
         border-radius: 23px;
     }
-    &::-webkit-scrollbar-button {
-        width: 0;
-        height: 0;
-    }
 }
 
 .sc-kakaoT {
     display: none;
     border-top: 1px solid rgb(229, 229, 229);
+    .common-inner {
+        position: relative;
+        padding: 0 5%;
+    }
     .mainImg-area img {
         width: 100%; height: 610px;
         object-fit: cover;
-        object-position: 50% 50%;
+        object-position: 50%;
         opacity: 1;
     }
     .mainTitle-box {
@@ -95,21 +89,18 @@
         h2 {
             width: 50%;
             padding: 0 150px;
-            word-break: keep-all;
-            overflow-wrap: break-word;
             font-size: 30px;
             font-weight: 800;
             line-height: 46px;
             white-space: pre-line;
+            word-break: keep-all;
         }
         p {
-            flex: 1;
-            word-break: keep-all;
-            overflow-wrap: break-word;
             font-size: 22px;
             font-weight: 800;
             line-height: 34px;
             white-space: pre-line;
+            word-break: keep-all;
         }
         .desc {
             width: 50%;
@@ -133,14 +124,13 @@
         padding-bottom: 80px;
     }
     .title-box {
-        flex: 1;
+        width: 50%;
         padding: 0 6px;
         h3 {
             font-size: 30px;
             font-weight: 800;
             line-height: 46px;
             word-break: keep-all;
-            overflow-wrap: break-word;
             white-space: pre-line;
         }
         p {
@@ -150,7 +140,6 @@
             line-height: 30px;
             color: rgb(102, 102, 102);
             word-break: keep-all;
-            overflow-wrap: break-word;
             white-space: pre-line;
         }
     }
@@ -176,7 +165,7 @@
             display: flex;
             flex-flow: row-reverse;
             padding: 0;
-            overflow: unset;
+            overflow: visible;
         }
         img {
             margin-top: -60px;
@@ -186,16 +175,14 @@
         }
         .title-box {
             padding: 0;
-            h3 {
-                word-break: normal;
-                overflow-wrap: normal;
-            }
         }
     }
     .yellow-inner {
         display: flex;
         align-items: center;
+        max-width: 1920px;
         padding: 0 5%;
+        margin: 0 auto;
         &.reverse .img-box {
             flex-flow: row;
             img {
@@ -212,12 +199,10 @@
     position: relative;
     width: 100%; height: 608px;
     margin-top: 120px;
-    background-image: url(../images/bg_taxi.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url(../images/bg_taxi.jpg) no-repeat center/cover;
     color: #fff;
     overflow: hidden;
-    strong {
+    em {
         display: block;
         padding: 94px 6px 0;
         font-size: 30px;
@@ -225,6 +210,7 @@
         line-height: 46px;
     }
     .desc {
+        display: inline-block;
         padding: 24px 6px 0;
         font-size: 16px;
         font-weight: 400;
@@ -298,7 +284,7 @@
         pointer-events: none;
         z-index: 2;
     }
-    strong {
+    em {
         display: block;
         padding: 109px 6px 24px;
         font-size: 30px;
@@ -312,15 +298,14 @@
         line-height: 30px;
         white-space: pre-line;
     }
-    
     .btn-proxy {
         padding-left: 5%;
         padding-right: 5%;
         bottom: 109px;
-        z-index: 2;
         width: 300px;
         text-align: left;
         box-sizing: content-box;
+        z-index: 2;
         & .swiper-pagination-bullet {
             width: 100%; height: 100%;
             border-radius: 0;
@@ -365,17 +350,14 @@
     width: 100%; height: 100%;
     background: #fff;
     opacity: 0;
-    z-index: 3;
     pointer-events: none;
+    z-index: 3;
 }
 
 .proxy-type {
     position: relative;
-    flex-shrink: 0;
-    width: 100%; height: 608px;
-    background-position: center -14px;
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: 608px;
+    background: no-repeat center -14px/cover;
     p {
         position: absolute;
         top: 109px; left: 37.6%;
@@ -410,25 +392,24 @@
         font-size: 30px;
         font-weight: 800;
         line-height: 46px;
-        word-break: keep-all;
-        overflow-wrap: break-word;
     }
     p {
-        margin-top: 40px;
+        margin: 40px 0;
         font-size: 22px;
         font-weight: 800;
         line-height: 34px;
-        word-break: keep-all;
-        overflow-wrap: break-word;
         white-space: pre-line;
+    }
+    .link-app {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
     a {
         display: inline-block;
-        margin-right: 10px;
         background-color: transparent;
         width: 220px; height: 86px;
         padding: 26px 0px;
-        margin-top: 40px;
         border: 1px solid #000;
         font-size: 22px;
         font-weight: 400;
@@ -440,8 +421,7 @@
             width: 32px; height: 32px;
             margin-right: 8px;
             margin-bottom: 6px;
-            background-size: contain;
-            background-repeat: no-repeat;
+            background: no-repeat center/contain;
             vertical-align: middle;
         }
         &.googlePlay::before {
@@ -463,17 +443,15 @@
     padding: 100px 0;
     color: #fff;
     .bg-guide {
+        position: absolute;
         width: 100%; height: 632px;
-        background-image: url(../images/sc_guide.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
+        background: url(../images/sc_guide.jpg) no-repeat center/cover;
+        z-index: -1;
+        pointer-events: none;
     }
     .text-box {
-        position: absolute;
-        top: 0px; left: 0px;
-        width: 100%;
-        padding-top: 220px;
+        width: 100%; height: 632px; 
+        padding-top: 120px;
         h2 {
             display: block;
             padding: 0 6px;
@@ -486,8 +464,6 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 30px;
-            word-break: keep-all;
-            overflow-wrap: break-word;
             white-space: pre-line;
         }
         a {
@@ -497,7 +473,7 @@
 }
 
 .sc-qa {
-    padding: 100px 0;
+    padding: 100px 0 200px;
     .common-inner {
         display: flex;
     }
@@ -514,23 +490,19 @@
     }
     .bg-qa {
         position: absolute;
-        top: 0px; left: 125px;
+        top: 0px; left: 50%;
         max-height: 100%;
-        margin: 0px 5%;
         width: 393px; height: 175px;
-        background-image: url(../images/sc_qa.svg), none;
-        background-size: contain;
-        background-repeat: no-repeat;
+        background: url(../images/sc_qa.svg) no-repeat center/contain;
+        transform: translateX(-50%);
         z-index: -1;
     }
     .text-box {
-        flex: 1;
+        width: 50%;
         p {
             font-size: 22px;
             font-weight: 800;
             line-height: 34px;
-            word-break: keep-all;
-            overflow-wrap: break-word;
             white-space: pre-line;
         }
     }
@@ -551,9 +523,7 @@
 .sc-partner {
     position: relative;
     width: 100%; height: 632px;
-    padding-top: 100px;
     color: #fff;
-    overflow-x: hidden;
     video {
         position: absolute;
         top: 50%; left: 50%;
@@ -561,6 +531,9 @@
         width: 100%; height: 100%;
         min-width: 303.797vh; min-height: 32.9167vw;
         z-index: -1;
+    }
+    .common-inner {
+        padding-top: 100px;
     }
     .text-box {
         padding: 0 6px;
